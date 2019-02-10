@@ -1,0 +1,32 @@
+{
+  "name": "node-server-boilerplate",
+  "version": "0.0.1",
+  "description": "Node server boilerplate",
+  "main": "server.js",
+  "engine": {
+    "node": "*",
+    "npm": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rodrigo-almeida/node-server-boilerplate.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "Rodrigo Almeida <rodrigoalmeida.contato@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "crypto": "^1.0.1",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "firebase-admin": "^7.0.0",
+    "jsonwebtoken": "^8.4.0",
+    "mongoose": "^5.4.9",
+    "mongoose-unique-validator": "^2.0.2",
+    "morgan": "^1.9.1"
+  }
+}

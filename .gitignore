@@ -1,0 +1,6 @@
+node_modules/
+build/
+.vscode/
+node-base-firebase-adminsdk-uugkd-dc9bdb7777.json
+package-lock.json
+.env
