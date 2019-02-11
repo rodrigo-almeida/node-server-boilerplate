@@ -5,11 +5,11 @@ const mongoose = require('mongoose');
 mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL;
 mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true }); // useNewUrlParser is needed to deal with deprecated connection's url 
 
-mongoose.connection.on('connected', function(){  
+mongoose.connection.on('connected', () => {  
     console.log('Mongoose default connection is open to ', process.env.MONGO_URL);
 });
 
-mongoose.connection.on('error', function(err){
+mongoose.connection.on('error', (err) => {
     console.log('Mongoose default connection has occured with error: %s', err);
 });
 

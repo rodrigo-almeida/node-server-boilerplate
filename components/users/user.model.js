@@ -19,19 +19,19 @@ let UserSchema = new mongoose.Schema({
 UserSchema.plugin(uniqueValidator, {message: 'is already taken.'});
 
 // Hash password with crypto using the generated salt 
-UserSchema.methods.setPassword = function(password){
+UserSchema.methods.setPassword = (password) => {
     this.salt = crypto.randomBytes(16).toString('hex');
     this.hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
 };
 
 // Validates the user's password
-UserSchema.methods.validPassword = function(password) {
+UserSchema.methods.validPassword = (password) => {
     var hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
     return this.hash === hash;
 };
 
 // Generates the web token
-UserSchema.methods.generateJWT = function() {
+UserSchema.methods.generateJWT = () => {
     var today = new Date();
     var exp = new Date(today);
     exp.setDate(today.getDate() + 60);
@@ -43,7 +43,7 @@ UserSchema.methods.generateJWT = function() {
 };
 
 // Returns the user as JSON for authentication
-UserSchema.methods.toAuthJSON = function(){
+UserSchema.methods.toAuthJSON = () => {
     return {
         username: this.username,
         email: this.email,

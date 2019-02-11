@@ -4,7 +4,7 @@ const
     authLoginRouter = require('../components/auth/login.route');
     authSignupRouter = require('../components/auth/sing-up.route');
 
-module.exports = function(app) {
+module.exports = (app) => {
     app.get('/', (req, res) => {
         res.sendFile(path.join(__dirname + '/../public/login.html'));
     });
