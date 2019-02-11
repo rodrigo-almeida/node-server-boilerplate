@@ -6,14 +6,13 @@ const morgan = require('morgan'); // Logging module
 
 // Config modules
 require('dotenv').config(); // Module that reads the .env file to load environment variables
-require('./config/firebase.setup'); // Firebase setup loading
-require('./config/mongodb.setup'); // MongoDb setup loading
+if (process.env.FIREBASE_ADMIN_ACTIVE == "true")
+    require('./config/firebase.setup'); // Firebase setup loading
+if (process.env.MONGODB_ACTIVE == "true")
+    require('./config/mongodb.setup'); // MongoDb setup loading
 
 // Models
 require('./components/users/user.model');
-
-// Route handler
-require('./routes/router')(app);
 
 const 
     port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
@@ -21,8 +20,12 @@ const
 
 // Middlewares
 app.use(bodyParser.json()); // Parser configuration
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('combined')); // Logging configuration
 app.use(express.static(`${__dirname}/public`)); // Client app
+
+// Route handler
+require('./routes/router')(app);
 
 // Error handler
 app.use((err, req, res, next) => {

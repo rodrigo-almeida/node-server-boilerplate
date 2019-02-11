@@ -4,13 +4,14 @@ function submitLogin() {
         pass = document.getElementById('pass').value,
         url = 'http://localhost:3000/auth/login';
 
-        $.ajax({
-            type: "POST",
-            url: url,
-            data: {email, pass},
-            success: (res) => {
-                console.log('HTTP -> ' + res);
-        }});
+    $.ajax({
+        type: "POST",
+        contentType:"application/json",
+        url: url,
+        data: JSON.stringify({email, pass}),
+        success: (res) => {
+            console.dir(res);
+    }});
 }
 
 function submitSignUp() {
@@ -21,9 +22,10 @@ function submitSignUp() {
 
     $.ajax({
         type: "POST",
+        contentType:"application/json",
         url: url,
-        data: {email, pass},
+        data: JSON.stringify({email, pass}),
         success: (res) => {
-            console.log('HTTP -> ' + res);
+            console.dir(res);
         }});
 }
