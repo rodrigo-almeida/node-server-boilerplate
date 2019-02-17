@@ -3,6 +3,7 @@ const
     userApiRouter = require('../components/users/users-api.router');
     authLoginRouter = require('../components/auth/login.route');
     authSignupRouter = require('../components/auth/sing-up.route');
+    oAuthRouter = require('../components/auth/oauth.route');
 
 module.exports = (app) => {
     app.get('/', (req, res) => {
@@ -13,4 +14,5 @@ module.exports = (app) => {
     userApiRouter(app);
     authLoginRouter(app);
     authSignupRouter(app);
+    oAuthRouter(app);
 }

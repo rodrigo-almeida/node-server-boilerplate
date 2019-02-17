@@ -11,7 +11,8 @@ function submitLogin() {
         data: JSON.stringify({email, pass}),
         success: (res) => {
             console.dir(res);
-    }});
+        }
+    });
 }
 
 function submitSignUp() {
@@ -27,5 +28,24 @@ function submitSignUp() {
         data: JSON.stringify({email, pass}),
         success: (res) => {
             console.dir(res);
-        }});
+        }
+    });
+}
+
+function submitOAuthGoogle() {
+    let url = 'http://localhost:3000/auth/google';
+    window.location = url;
+}
+
+function submitDeleteAllUsers() {
+    let url = 'http://localhost:3000/api/users';
+
+    $.ajax({
+        type: "DELETE",
+        contentType:"application/json",
+        url: url,
+        success: (res) => {
+            console.log(res);
+        }
+    });
 }

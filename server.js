@@ -3,12 +3,13 @@ const express = require('express');
 const app = express(); // Framework module
 const bodyParser = require('body-parser'); // Parser module
 const morgan = require('morgan'); // Logging module
+const passport = require('passport');
 
 // Config modules
 require('dotenv').config(); // Module that reads the .env file to load environment variables
-if (process.env.FIREBASE_ADMIN_ACTIVE == "true")
+if (process.env.FIREBASE_ADMIN_ACTIVE == 'true')
     require('./config/firebase.setup'); // Firebase setup loading
-if (process.env.MONGODB_ACTIVE == "true")
+if (process.env.MONGODB_ACTIVE == 'true')
     require('./config/mongodb.setup'); // MongoDb setup loading
 
 // Models
@@ -21,8 +22,11 @@ const
 // Middlewares
 app.use(bodyParser.json()); // Parser configuration
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(morgan('combined')); // Logging configuration
+if (process.env.LOG_REQUESTS == 'true')
+    app.use(morgan('combined')); // Logging configuration
 app.use(express.static(`${__dirname}/public`)); // Client app
+app.use(passport.initialize());
+require('./config/passport.setup');
 
 // Route handler
 require('./routes/router')(app);

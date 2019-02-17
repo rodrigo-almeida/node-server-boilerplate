@@ -7,7 +7,9 @@
         <title>Login</title>
         <!-- Bootstrap -->
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.3/css/mdb.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.css">
         <link rel="stylesheet" href="../../styles.css">
 </head>
 <body class="hm-grey">
@@ -42,6 +44,12 @@
                             <div class="text-center">
                                 <button class="btn btn-primary waves-effect waves-light" onclick="submitLogin()">Login</button>
                                 <button class="btn btn-primary waves-effect waves-light" onclick="submitSignUp()">Sign-Up</button>
+                                <button class="btn btn-danger waves-effect waves-light" onclick="submitDeleteAllUsers()">Delete Users</button>
+                            </div>
+                            <div class="text-center">
+                                <a class="btn btn-block btn-social btn-google" onclick="submitOAuthGoogle()">
+                                    <span class="fa fa-google"></span> Sign Up With Google
+                                </a>
                             </div>
                         </div>
                     </div>
