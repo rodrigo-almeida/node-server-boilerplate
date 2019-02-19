@@ -3,5 +3,5 @@ const serviceAccount = require(`../${process.env.FIREBASE_ADMIN_CONFIG_FILE}`);
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
-    databaseURL: "https://node-base.firebaseio.com"
+    databaseURL: process.env.FIREBASE_DATABASE_URL
 });
