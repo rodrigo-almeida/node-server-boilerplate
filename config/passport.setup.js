@@ -27,11 +27,12 @@ passport.use(
             let user = {
                 email: profile.emails[0].value,
                 emailVerified: false,
-                password: '1234',
+                password: '123456', //this must be changed
                 displayName: profile.displayName,
                 disabled: false
             };
 
+            //adds the user in firebase
             fbAdminAuthService.createUser(user)
             .then((createdUser) => {
                 console.log('Successfully created new user:', createdUser.uid);
