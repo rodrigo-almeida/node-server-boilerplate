@@ -4,3 +4,4 @@ build/
 node-base-firebase-adminsdk-uugkd-dc9bdb7777.json
 package-lock.json
 .env
+npm-debug.log
