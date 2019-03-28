@@ -18,7 +18,6 @@ passport.use(
         clientID: process.env.PASS_GOOGLE_CLIENT_ID,
         clientSecret: process.env.PASS_GOOGLE_CLIENT_SECRET
     }, (accessToken, refreshToken, profile, done) => { // passport callback
-        console.log(profile.id);
         fbAdminAuthService.getUserByUID(profile.id)
         .then((userRecord) => {
             console.log('User found! UID: ' + userRecord.uid);
@@ -33,7 +32,6 @@ passport.use(
                 displayName: profile.displayName,
                 disabled: false
             };
-            console.log(user);
 
             //adds the user in firebase
             fbAdminAuthService.createUser(user)
